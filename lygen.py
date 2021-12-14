@@ -1,5 +1,6 @@
 # importing only those functions
 # which are needed
+
 from tkinter import *
 from tkinter.ttk import *
 from lyrics_extractor import SongLyrics
@@ -13,11 +14,11 @@ root.configure(bg = '#5B9AE6')
 root.geometry('600x760')
 
 #background image
-bg = PhotoImage(file = "C:/Users/kris/Desktop/ACP FINAL_PROJ/original.png")
+bg = PhotoImage(file = "C:/Users/kris/Desktop/ACP FINAL_PROJ/bg.png")
   
 # Show image using label
-label1 = Label( root, image = bg)
-label1.place(x = -65, y = 0)
+label = Label( root, image = bg)
+label.place(x = -65, y = 0)
 
 #set window icon
 root.iconphoto(False, tk.PhotoImage(file='C:/Users/kris/Desktop/ACP FINAL_PROJ/ICON.png'))
@@ -34,18 +35,27 @@ def get_lyrics():
 	
 result = StringVar()
 
-label1 = Label(root, text = "Search Lyrics",
-font = ('Century Gothic', 12)).place(x = 50, y = 50) 
+label1 = tk.Label(root, text = "Search Lyrics",
+font = ('Century Gothic', 12))
+label1.config(bg = "#82bac1", fg = "#E53D00")
+label1.place(x = 50, y = 50) 
+
 
 songInput = Entry(root, width = 30, font = ('Century Gothic', 12))
 songInput.place(x = 155, y = 50)
 
-label2 = Label(root, width = 50, textvariable = result,
-font = ('Century Gothic', 8)).place(x = 145, y = 85)
+label2 = tk.Label(root, width = 50, textvariable = result,
+font = ('Century Gothic', 8))
+label2.config(bg = "#82bac1", fg = "#262626")
+label2.place(x = 145, y = 85)
+
 
 # Adding widgets to the root window
-Label(root, text = 'Lyrics Generator', 
-font = ('Century Gothic', 15)).pack(side = TOP, pady = 10)
+label3 = tk.Label(root, text = 'Lyrics Generator', 
+font = ('Century Gothic', 18))
+label3.config(bg = "#82bac1", fg = "#E53D00")
+label3.pack(side = TOP, pady = 10)
+
 
 # Creating a photoimage object to use image
 photo = PhotoImage(file = r"C:/Users/kris/Desktop/ACP FINAL_PROJ/search.png")
@@ -55,8 +65,9 @@ photoimage = photo.subsample(5, 5)
 
 #button search, inserted w/ image
 #using the function get_lyrics in command
-Button(root, text = 'SEARCH', image = photoimage, command=get_lyrics,
-					compound = LEFT).place(x = 440, y = 45)
+searchbtn = tk.Button(root, text = 'Search', image = photoimage, command=get_lyrics, compound = LEFT)
+searchbtn.config(fg = "#E53D00", bg = "#82bac1", font = ('Century Gothic', 8))
+searchbtn.place(x = 440, y = 45)
 
 root.resizable(False, False)
 
